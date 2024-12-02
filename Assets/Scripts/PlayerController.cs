@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;    
     //Main camera
     private Camera mainCamera;
+    //Bool to determine shoot speed
+    public bool shootFast = false;
 
     void Start()
     {
@@ -64,10 +66,20 @@ public class PlayerController : MonoBehaviour
 
     void ShootHandler()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Shoot();
+        if(shootFast)
+        { 
+            while (Input.GetMouseButtonDown(0))
+            {
+                Shoot();
+            }
         }
+        else 
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Shoot();
+            }
+        }      
     }
 
     void Shoot()
