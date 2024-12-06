@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class ThirdPersonController : MonoBehaviour
 {
     //Custom cursor object
-    public GameObject cursor;        
+    public GameObject cursor;
     //Bullet prefab
-    public GameObject bulletPrefab; 
+    public GameObject bulletPrefab;
     //Point where the bullet spawns
     public Transform shootPoint;
     //Player speed
-    public float moveSpeed = 5f;     
+    public float moveSpeed = 5f;
     //Bullet Speed
-    public float bulletSpeed = 20f;  
+    public float bulletSpeed = 20f;
     //Ground layer for cursor
-    public LayerMask groundLayer;    
+    public LayerMask groundLayer;
     //Main camera
     private Camera mainCamera;
     //Bool to determine shoot speed
@@ -59,27 +59,27 @@ public class PlayerController : MonoBehaviour
             Vector3 targetPosition = hitInfo.point;
             Vector3 direction = (targetPosition - transform.position).normalized;
             //Keep player upright
-            direction.y = 0; 
+            direction.y = 0;
             transform.rotation = Quaternion.LookRotation(direction);
         }
     }
 
     void ShootHandler()
     {
-        if(shootFast)
-        { 
+        if (shootFast)
+        {
             while (Input.GetMouseButtonDown(0))
             {
                 Shoot();
             }
         }
-        else 
+        else
         {
             if (Input.GetMouseButtonDown(0))
             {
                 Shoot();
             }
-        }      
+        }
     }
 
     void Shoot()
